@@ -1,34 +1,40 @@
 import React from 'react'
 import './Navbar.css'
 import { useState } from 'react'
+import { Link } from 'react-router-dom';
 
-
-const Navbar = () => {
+const Navbar = ({setShowLogin}) => {
 
     const [menu, setMenu] = useState("Home");
 
   return (
     <div className='navbar'>
-      <img src="https://res.cloudinary.com/dludtk5vz/image/upload/v1727183681/kuzj5mbmdqig158lpnyg.png" alt=""  className='logo'/>
+      <Link to='/'>
+        <img src="https://res.cloudinary.com/dludtk5vz/image/upload/v1727183681/kuzj5mbmdqig158lpnyg.png" alt=""  className='logo'/>
+      </Link>
 
       <ul className="navbar-menu">
-        <li className={menu==="Home" ? "active" : ""} onClick={() => setMenu("Home")}>Home</li>
-        <li className={menu==="Menu" ? "active" : ""} onClick={() => setMenu("Menu")}>Menu</li>
-        <li className={menu==="Mobile-app" ? "active" : ""} onClick={() => setMenu("Mobile-app")}>Mobile-app</li>
-        <li className={menu==="Contact Us" ? "active" : ""} onClick={() => setMenu("Contact Us")}>Contact Us</li>
+        <Link to='/' className={menu==="Home" ? "active" : ""} onClick={() => setMenu("Home")}>Home</Link>
+        <a href="#explore-menu" className={menu==="Menu" ? "active" : ""} onClick={() => setMenu("Menu")}>Menu</a>
+        <a href="#app-download" className={menu==="Mobile-app" ? "active" : ""} onClick={() => setMenu("Mobile-app")}>Mobile-app</a>
+        <a href="#footer" className={menu==="Contact Us" ? "active" : ""} onClick={() => setMenu("Contact Us")}>Contact Us</a>
       </ul>
 
       <div className="navbar-right">
         <i className="fa-solid fa-magnifying-glass"></i>
 
         <div className="navbar-search-icon">
-            <i className="fa-solid fa-cart-shopping cart"></i>
+            <Link to='/cart'>
+              <i className="fa-solid fa-cart-shopping cart"></i>
+            </Link>
             <div className="dot">
 
             </div>
         </div>
 
-        <button>Sign In</button>
+        <button onClick={() => {
+          setShowLogin(true)
+        }}>Sign In</button>
       </div>
     </div>
   )
