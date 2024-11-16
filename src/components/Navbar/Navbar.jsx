@@ -31,7 +31,7 @@ const Navbar = ({setShowLogin}) => {
             <Link to='/cart'>
               <i className="fa-solid fa-cart-shopping cart"></i>
             </Link>
-            <div className="dot">
+            <div className={!getTotalCartAmount() ? "" : "dot"}>
 
             </div>
         </div>
